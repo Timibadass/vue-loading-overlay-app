@@ -3,18 +3,20 @@
 		<form @submit.prevent="logIn">
 			<loading-overlay :active="isLoading" :is-full-page="fullPage" :loader="loader">
 				<div class="loader__container"></div>
-				<!-- <div class="loader__container--second"></div> -->
 			</loading-overlay>
 			<label for="name" class="label">Name</label>
 			<input type="text" name="name" class="input__field" id="name" />
 			<label for="email" class="label">Email Address</label>
 			<input type="email" name="email" class="input__field" id="email" />
-			<button type="submit" class="submit__button">Submit</button>
+			<!-- replace existing button -->
+			<form-button class="submit__button">Save</form-button>
 		</form>
 	</div>
 </template>
 
 <script>
+	// import button component
+	import FormButton from "@/components/button.vue";
 	export default {
 		name: "Home",
 		data() {
@@ -23,6 +25,9 @@
 				fullPage: false,
 				loader: "bars"
 			};
+		},
+		components: {
+			FormButton
 		},
 		methods: {
 			logIn() {
